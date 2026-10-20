@@ -38,8 +38,22 @@ class AdminController {
         $articleManager = new ArticleManager();
         $currentBy = Utils::request("by", "date_creation");
         $currentOrder = Utils::request("order", "ASC");
+
+
+        // liste des colonnes autorisées pour le tri
+        $allowedColumns = ["title", "views", "commentsCount", "date_creation"];
+        if (!in_array($currentBy, $allowedColumns)) {
+            $currentBy = "date_creation"; // Valeur par défaut si la colonne n'est pas valide.
+        } 
+        if (!in_array($currentOrder, ["ASC", "DESC"])) {
+            $currentOrder = "ASC"; // Valeur par défaut si l'ordre n'est pas valide.
+        } 
+
+        // On détermine l'ordre suivant pour le tri.
         $nextOrder = $currentOrder === "ASC" ? "DESC" : "ASC";
 
+        // On récupère les articles triés par la colonne demandée.
+        // Condition spéciale pour le tri par nombre de commentaires, car cette colonne n'existe pas dans la table article.
         if ($currentBy === "commentsCount") {
             $articles = $articleManager->getAllArticlesOrderedByCommentsCount($currentOrder);
         } else {
