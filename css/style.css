@@ -105,11 +105,17 @@ form .formGrid .submit {
 }
 
 .submit {
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-weight: bold;
     color: white;
     background-color: var(--commentColor);
     border: none;
+    margin : 0px 10px 10px 0px;
+}
+
+.adminButtons {
+    display: flex;
+    justify-content: space-between;
 }
 
 /**
@@ -337,6 +343,80 @@ a.info {
     border: 1px solid var(--backgroundColor);
 }
 
+/**
+ * Partie monitoring pour l'administration
+ */ 
+
+
+.adminMonitoring {
+    margin-bottom: 20px;
+    background-color: var(--commentPaleColor);
+    color: white;
+    width: 100%;
+    align-items: center;
+}
+
+.MonitoringLine {
+    display: flex;
+}
+
+.MonitoringLine > div {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--backgroundColor);
+    box-sizing: border-box;
+}
+
+/* Largeur des 4 colonnes */
+.MonitoringLine .title {
+    font-weight: bold;
+    width: 50%;
+}
+
+.MonitoringLine .views {
+    width: 10%;
+}
+
+.MonitoringLine .comments {
+    width: 20%;
+}
+
+.MonitoringLine .publicationDate {
+    width: 20%;
+}
+
+.MonitoringLine .comments {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 0;
+    height: auto;
+    margin: 0;
+    border-top: none;
+    border: 1px solid var(--backgroundColor);
+}
+
+.MonitoringLine:nth-child(odd) {
+    background-color: #6a7021;
+}
+
+/* En-têtes */
+.MonitoringHeader {
+    font-weight: bold;
+}
+
+/**Condition pour l'affichage des articles dans le monitoring */
+.adminMonitoring {
+    display: none;
+}
+
+@media screen and (min-width: 1366px) {
+    .adminMonitoring {
+        display: block;
+    }
+}
+
 /** 
  * Footer global de la page.
  */
@@ -350,3 +430,4 @@ footer {
     color: white;
     background-color: var(--headerColor);
 }
+
