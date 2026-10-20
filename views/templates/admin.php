@@ -5,11 +5,13 @@
      */
 ?>
 
-<h2>Edition des articles</h2>
-<div class="adminButtons">
-    <a class="submit" href="index.php?action=showUpdateArticleForm">Ajouter un article</a>
-    <a class="submit" href="index.php?action=monitoring">Statistiques</a>
+<div class="adminMenu">
+    <a class="adminSubmit active" href="index.php?action=admin">Panneau d'administration</a>
+    <a class="adminSubmit" href="index.php?action=monitoring">Monitoring</a>
 </div>
+
+<h2>Edition des articles</h2>
+
 <div class="adminArticle">
     <?php foreach ($articles as $article) { ?>
         <div class="articleLine">
@@ -20,4 +22,4 @@
         </div>
     <?php } ?>
 </div>
-
+<a class="submit" href="index.php?action=showUpdateArticleForm">Ajouter un article</a>

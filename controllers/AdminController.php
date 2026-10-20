@@ -73,6 +73,35 @@ class AdminController {
         ]);
     }
 
+    public function showCommentMonitoring() : void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        $this->checkIfUserIsConnected();
+
+        // On récupère l'id de l'article.
+        $id = Utils::request("id", -1);
+
+        // On récupère l'article associé.
+        $articleManager = new ArticleManager();
+        $article = $articleManager->getArticleById($id);
+
+        if (!$article) {
+            $this->showMonitoring();
+            return;
+        }
+
+        // On récupère les commentaires associés à l'article.
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getAllCommentsByArticleId($id);
+
+        // On affiche la page de monitoring des commentaires.
+        $view = new View("Monitoring des commentaires");
+        $view->render("commentsMonitoring", [
+            'article' => $article,
+            'comments' => $comments
+        ]);
+    }
+
     /**
      * Vérifie que l'utilisateur est connecté.
      * @return void
@@ -223,5 +252,32 @@ class AdminController {
        
         // On redirige vers la page d'administration.
         Utils::redirect("admin");
+    }
+
+    /**
+     * Supprime un commentaire.
+     * @return void
+     */
+    public function deleteComment() : void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        $this->checkIfUserIsConnected();
+        
+        // On récupère l'id du commentaire et de l'article.
+        $idComment = Utils::request("commentId", -1);
+        $articleId = Utils::request("articleId", -1);
+
+        // On vérifie si le commentaire existe.
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentById($idComment);
+        if (!$comment) {
+            throw new Exception("Le commentaire demandé n'existe pas.");
+        }
+        
+        // On supprime le commentaire
+        $commentManager->deleteComment($comment);
+
+        // On redirige vers la page de monitoring de l'article.
+        Utils::redirect("commentMonitoring&id=".$articleId);
     }
 }

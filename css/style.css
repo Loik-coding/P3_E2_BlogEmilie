@@ -417,6 +417,105 @@ a.info {
     }
 }
 
+/* spécificités pour le CommentMonitoring*/
+/* Largeur des 4 colonnes */
+.adminCommentMonitoring {
+    margin-bottom: 20px;
+    background-color: var(--commentPaleColor);
+    color: white;
+    width: 100%;
+    align-items: center;
+}
+
+.commentMonitoringLine {
+    display: flex;
+}
+
+.commentMonitoringLine {
+    display: flex;
+    width: 100%;
+}
+
+.commentMonitoringLine > div {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--backgroundColor);
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.commentMonitoringLine .pseudo {
+    width: 20%;
+    flex-shrink: 0;
+}
+
+.commentMonitoringLine .content {
+    width: 45%;
+    flex-shrink: 0;
+    overflow-wrap: anywhere;
+}
+
+.commentMonitoringLine .creation_date {
+    width: 15%;
+    flex-shrink: 0;
+}
+
+.commentMonitoringLine .supprimer {
+    width: 20%;
+    flex-shrink: 0;
+}
+
+.commentMonitoringLine:nth-child(odd) {
+    background-color: #6a7021;
+}
+
+/* En-têtes */
+.commentMonitoringHeader {
+    font-weight: bold;
+}
+
+/**Condition pour l'affichage des articles dans le monitoring */
+.adminCommentMonitoring {
+    display: none;
+}
+
+@media screen and (min-width: 1366px) {
+    .adminCommentMonitoring {
+        display: block;
+    }
+}
+
+
+.adminMenu {
+    display: flex;
+    flex-direction: line;
+    align-items: flex-start;
+    gap: 12px;
+    width: fit-content;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.adminSubmit {
+    display: inline-block;
+    color: #6a7021;
+    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    border: none;
+    padding: 4px 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.adminSubmit:hover,
+.adminSubmit.active {
+    color: #3d4012;
+}
+
+
 /** 
  * Footer global de la page.
  */

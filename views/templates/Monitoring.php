@@ -1,15 +1,17 @@
 <?php 
     /** 
-     * Affichage de la partie admin : liste des articles avec un bouton "modifier" pour chacun. 
-     * Et un formulaire pour ajouter un article. 
+     * Affichage de la partie monitoring : liste des articles avec statistiques sur le nombre de vues et de commentaires, avec possibilité de trier par colonne.
+     * un bouton pour revenir à l'administration et l'accès à la liste des commentaires pour chaque article.
      */
 ?>
 
+<div class="adminMenu">
+    <a class="adminSubmit" href="index.php?action=admin">Panneau d'administration</a>
+    <a class="adminSubmit active" href="index.php?action=monitoring">Monitoring</a>
+</div>
 
 <h2>Monitoring des articles</h2>
-<div class="adminButtons">
-    <a class="submit" href="index.php?action=admin">Retour à l'administration</a>
-</div>
+
 <div class="adminMonitoring">
     <div class="MonitoringLine Header">
         <div class="title">
@@ -31,7 +33,7 @@
     </div>
     <?php foreach ($articles as $article) { ?>
         <div class="MonitoringLine">
-            <div class="title"><?= $article->getTitle() ?></div>
+            <div class="title"><a href="index.php?action=commentMonitoring&id=<?= $article->getId() ?>"><?= $article->getTitle() ?></a></div>
             <div class="views"><?= $article->getViews() ?></div>
             <div class="comments"><?= $article->getCommentsCount() ?></div>
             <div class="publicationDate">
