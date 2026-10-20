@@ -3,10 +3,6 @@
      * Affichage de la partie admin : liste des articles avec un bouton "modifier" pour chacun. 
      * Et un formulaire pour ajouter un article. 
      */
-    $currentBy = Utils::request("by", "title");
-    $currentOrder = Utils::request("order", "ASC");
-
-    $nextOrder = $currentOrder === "ASC" ? "DESC" : "ASC";
 ?>
 
 
@@ -17,16 +13,20 @@
 <div class="adminMonitoring">
     <div class="MonitoringLine Header">
         <div class="title">
-            <a href="index.php?action=monitoring&by=title&order=ASC"><?= $currentBy === 'title' ? $nextOrder : 'ASC' ?>Titre</a>
+            <a href="index.php?action=monitoring&by=title&order=<?= $currentBy === 'title' ? $nextOrder : 'ASC' ?>">
+                Titre <?php if ($currentBy === 'title') { echo $nextOrder === 'ASC' ? '▼' : '▲'; } ?></a>
         </div>
         <div class="views">
-            <a href="index.php?action=monitoring&by=views&order=ASC"><?= $currentBy === 'views' ? $nextOrder : 'ASC' ?>Vues</a>
+            <a href="index.php?action=monitoring&by=views&order=<?= $currentBy === 'views' ? $nextOrder : 'ASC' ?>">
+                Vues <?php if ($currentBy === 'views') { echo $nextOrder === 'ASC' ? '▼' : '▲'; } ?></a>
         </div>
         <div class="comments">
-            <a href="index.php?action=monitoring&by=commentsCount&order=ASC"><?= $currentBy === 'commentsCount' ? $nextOrder : 'ASC' ?>Commentaires</a>
+            <a href="index.php?action=monitoring&by=commentsCount&order=<?= $currentBy === 'commentsCount' ? $nextOrder : 'ASC' ?>">
+                Commentaires <?php if ($currentBy === 'commentsCount') { echo $nextOrder === 'ASC' ? '▼' : '▲'; } ?>    </a>
         </div>
         <div class="publicationDate">
-            <a href="index.php?action=monitoring&by=date_creation&order=ASC"><?= $currentBy === 'date_creation' ? $nextOrder : 'ASC' ?>Date de publication</a>
+            <a href="index.php?action=monitoring&by=date_creation&order=<?= $currentBy === 'date_creation' ? $nextOrder : 'ASC' ?>">
+                Date de publication <?php if ($currentBy === 'date_creation') { echo $nextOrder === 'ASC' ? '▼' : '▲'; } ?></a>
         </div>
     </div>
     <?php foreach ($articles as $article) { ?>

@@ -39,6 +39,7 @@ class AdminController {
         $currentBy = Utils::request("by", "date_creation");
         $currentOrder = Utils::request("order", "ASC");
         $nextOrder = $currentOrder === "ASC" ? "DESC" : "ASC";
+
         if ($currentBy === "commentsCount") {
             $articles = $articleManager->getAllArticlesOrderedByCommentsCount($currentOrder);
         } else {
@@ -52,7 +53,9 @@ class AdminController {
         // On affiche la page de monitoring.
         $view = new View("Monitoring");
         $view->render("monitoring", [
-            'articles' => $articles
+            'articles' => $articles,
+            'currentBy' => $currentBy,
+            'nextOrder' => $nextOrder
         ]);
     }
 
