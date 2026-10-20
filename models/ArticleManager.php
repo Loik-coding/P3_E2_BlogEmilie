@@ -110,4 +110,29 @@ class ArticleManager extends AbstractEntityManager
         $row = $result->fetch();
         return (int)$row['commentsCount'];
     }
+
+    public function getAllArticlesOrderedBy(string $by, string $order) : array
+    {
+        $sql = "SELECT * FROM article ORDER BY $by $order";
+        $result = $this->db->query($sql);
+        $articles = [];
+
+        while ($article = $result->fetch()) {
+            $articles[] = new Article($article);
+        }
+        return $articles;
+    }
+
+    public function getAllArticlesOrderedByCommentsCount(string $order) : array
+    {
+        $sql = "SELECT a.*, COUNT(c.id) as commentsCount FROM article a LEFT JOIN comment c ON a.id = c.id_article GROUP BY a.id ORDER BY commentsCount $order";
+        $result = $this->db->query($sql);
+        $articles = [];
+
+        while ($article = $result->fetch()) {
+            $articles[] = new Article($article);
+        }
+        return $articles;
+    }
+
 }

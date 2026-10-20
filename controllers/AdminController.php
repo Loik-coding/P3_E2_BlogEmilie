@@ -25,6 +25,10 @@ class AdminController {
         ]);
     }
 
+    /**
+     * Affiche la page de monitoring.
+     * @return void
+     */
     public function showMonitoring() : void
     {
         // On vérifie que l'utilisateur est connecté.
@@ -32,13 +36,20 @@ class AdminController {
 
         // On récupère les articles.
         $articleManager = new ArticleManager();
-        $articles = $articleManager->getAllArticles();
+        $currentBy = Utils::request("by", "date_creation");
+        $currentOrder = Utils::request("order", "ASC");
+        $nextOrder = $currentOrder === "ASC" ? "DESC" : "ASC";
+        if ($currentBy === "commentsCount") {
+            $articles = $articleManager->getAllArticlesOrderedByCommentsCount($currentOrder);
+        } else {
+            $articles = $articleManager->getAllArticlesOrderedBy($currentBy, $currentOrder);
+        }
         foreach ($articles as $article) {
             $commentsCount = $articleManager->getCommentsCount($article->getId());
             $article->setCommentsCount($commentsCount);
         }
 
-        // On affiche la page d'administration.
+        // On affiche la page de monitoring.
         $view = new View("Monitoring");
         $view->render("monitoring", [
             'articles' => $articles
