@@ -2,15 +2,20 @@
     /** 
      * Affichage de la partie CommentsMonitoring : liste des commentaires par articles avec possibilité de les supprimer
      * Et un bouton pour revenir à la page de monitoring.
+     * @var Article $article
+     * @var array $comments
      */
 ?>
 
 <div class="adminMenu">
     <a class="adminSubmit" href="index.php?action=admin">Panneau d'administration</a>
+    <div class="adminSubmit"> | </div>
     <a class="adminSubmit" href="index.php?action=monitoring">Monitoring</a>
+    <div class="adminSubmit"> → </div>
+    <div class="adminSubmit active"><?= htmlspecialchars($article->getTitle()) ?></div>
 </div>
 
-<h2><?= htmlspecialchars($article->getTitle()) ?></h2>
+<h2>Gestion des commentaires de l'article</h2>
 
 
 <div class="adminCommentMonitoring">
@@ -18,7 +23,7 @@
         <div class="pseudo">Pseudo</div>
         <div class="content">Contenu</div>
         <div class="creation_date">Date de création</div>
-        <div class="Supprimer">Supprimer ce commentaire</div>
+        <div class="supprimer">Supprimer ce commentaire</div>
     </div>
     <?php foreach ($comments as $comment) { ?>
         <div class="commentMonitoringLine">
@@ -29,7 +34,7 @@
             </div>
             <div class="supprimer">
                 <a href="index.php?action=deleteComment&commentId=<?= $comment->getId() ?>&articleId=<?= $article->getId() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>
-            </div>
+            </div>      
         </div>
     <?php } ?>
 </div>

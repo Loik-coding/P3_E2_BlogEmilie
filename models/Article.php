@@ -130,20 +130,37 @@
         return $this->dateUpdate;
     }
 
+    /**
+     * Getter pour le nombre de vues d'un article.
+     * @return int
+     */
     public function getViews() : int
     {
         return $this->views;
     }
 
+    /**
+     * Setter pour le nombre de vues d'un article.
+     * @param int $views
+     */
     public function setViews(int $views) : void
     {
         $this->views = $views;
     }
-    
+
+    /**
+     * Getter pour le nombre de commentaires d'un article.
+     * @return int
+     */
     public function getCommentsCount() : int
     {
         return $this->commentsCount;
     }
+
+    /**
+     * Setter pour le nombre de commentaires d'un article.
+     * @param int $commentsCount
+     */
     public function setCommentsCount(int $commentsCount) : void
     {
         $this->commentsCount = $commentsCount;

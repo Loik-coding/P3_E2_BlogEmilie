@@ -451,7 +451,7 @@ a.info {
 }
 
 .commentMonitoringLine .content {
-    width: 45%;
+    width: 50%;
     flex-shrink: 0;
     overflow-wrap: anywhere;
 }
@@ -462,9 +462,10 @@ a.info {
 }
 
 .commentMonitoringLine .supprimer {
-    width: 20%;
+    width: 15%;
     flex-shrink: 0;
 }
+
 
 .commentMonitoringLine:nth-child(odd) {
     background-color: #6a7021;
@@ -490,6 +491,8 @@ a.info {
 .adminMenu {
     display: flex;
     flex-direction: line;
+    justify-content: left;
+    align-self: flex-start;
     align-items: flex-start;
     gap: 12px;
     width: fit-content;
@@ -501,8 +504,7 @@ a.info {
     display: inline-block;
     color: #6a7021;
     background: transparent;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+
     border: none;
     padding: 4px 0;
     font-size: 1.2rem;
@@ -513,6 +515,8 @@ a.info {
 .adminSubmit:hover,
 .adminSubmit.active {
     color: #3d4012;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 

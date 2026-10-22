@@ -2,11 +2,15 @@
     /** 
      * Affichage de la partie monitoring : liste des articles avec statistiques sur le nombre de vues et de commentaires, avec possibilité de trier par colonne.
      * un bouton pour revenir à l'administration et l'accès à la liste des commentaires pour chaque article.
+     * @var String $currentBy
+     * @var String $nextOrder
+     * @var array $articles 
      */
 ?>
 
 <div class="adminMenu">
     <a class="adminSubmit" href="index.php?action=admin">Panneau d'administration</a>
+    <div class="adminSubmit"> | </div>
     <a class="adminSubmit active" href="index.php?action=monitoring">Monitoring</a>
 </div>
 

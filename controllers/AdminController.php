@@ -280,4 +280,9 @@ class AdminController {
         // On redirige vers la page de monitoring de l'article.
         Utils::redirect("commentMonitoring&id=".$articleId);
     }
+
+    public function deleteSelectedComments() : void
+    {
+        //
+    }
 }

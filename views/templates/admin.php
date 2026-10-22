@@ -2,11 +2,13 @@
     /** 
      * Affichage de la partie admin : liste des articles avec un bouton "modifier" pour chacun. 
      * Et un formulaire pour ajouter un article. 
+     * @var array $articles
      */
 ?>
 
 <div class="adminMenu">
     <a class="adminSubmit active" href="index.php?action=admin">Panneau d'administration</a>
+    <div class="adminSubmit"> | </div>
     <a class="adminSubmit" href="index.php?action=monitoring">Monitoring</a>
 </div>
 
